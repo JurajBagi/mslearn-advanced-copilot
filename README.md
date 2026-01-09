@@ -11,6 +11,81 @@ Gain more practical experience by using this repository that contains a Python W
 1. Enable your [GitHub Copilot service](https://github.com/github-copilot/signup)
 1. Open [this repository with Codespaces](https://codespaces.new/MicrosoftDocs/mslearn-copilot-codespaces-python)
 
+## How to run this project
+
+### Run locally (macOS/Linux)
+
+1. Create and activate a virtual environment.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+2. Install dependencies.
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+3. Start the API.
+
+```bash
+python -m uvicorn main:app --reload
+```
+
+4. Open the API documentation (Swagger UI) in your browser:
+
+- http://127.0.0.1:8000/docs
+
+### Run locally (Windows PowerShell)
+
+1. Create and activate a virtual environment.
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+2. Install dependencies.
+
+```powershell
+py -m pip install --upgrade pip
+py -m pip install -r requirements.txt
+```
+
+3. Start the API.
+
+```powershell
+py -m uvicorn main:app --reload
+```
+
+4. Open the API documentation (Swagger UI) in your browser:
+
+- http://127.0.0.1:8000/docs
+
+### Try the endpoints
+
+Once the server is running, try:
+
+- List countries: `GET /countries`
+- List cities for a country: `GET /countries/{country}`
+- Per-city historical high/low for a month: `GET /countries/{country}?month=January`
+- City/month historical high/low: `GET /countries/{country}/{city}/{month}`
+
+For example:
+
+- `GET /countries/Spain` (returns only `Seville`)
+- `GET /countries/Portugal?month=January`
+- `GET /countries/England/London/January`
+
+### Run tests
+
+```bash
+python -m pytest
+```
+
 ## 💪🏽 Exercise
 The current API is not exposing country/{country} which needs to be implemented to list cities. The route should allow only GET HTTP requests with a JSON response providing information from the historical high and low for that country, city, and given month.
 
