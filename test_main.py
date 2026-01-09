@@ -34,3 +34,12 @@ def test_cities_by_country_month_returns_high_low_by_city():
 
     assert body["cities"]["Lisbon"] == {"high": 57, "low": 46}
     assert body["cities"]["Porto"] == {"high": 57, "low": 45}
+
+
+def test_cities_by_country_spain_only_seville():
+    response = client.get("/countries/Spain")
+    assert response.status_code == 200
+
+    body = response.json()
+    assert body["country"] == "Spain"
+    assert body["cities"] == ["Seville"]
